@@ -1,35 +1,26 @@
-# 🎨 PPTX to JSON Converter
+Here's the translated README for the PPTX to JSON Converter:
+🎨 PPTX to JSON Converter
 A JavaScript library that runs in the browser and converts .pptx files to readable JSON data.
-
 > The main differences from other PPTX file parsing tools:
-> 1. Runs directly in the browser;
-> 2. The parsing result is **readable** JSON data, not just XML file content directly translated to hard-to-understand JSON.
-
+>  * Runs directly in the browser.
+>  * The parsing result is readable JSON data, not just XML file content directly translated to hard-to-understand JSON.
+> 
 Online Demo: https://pipipi-pikachu.github.io/pptxtojson/
-
-# 🎯 Important Notes
-### ⚒️ 使用场景
-本仓库诞生于项目 [PPTist](https://github.com/pipipi-pikachu/PPTist) ，希望为其“导入 .pptx 文件功能”提供一个参考示例。不过就目前来说，解析出来的PPT信息与源文件在样式上还是存在差异。
-
-但如果你只是需要提取PPT文件的文本内容、媒体资源信息、结构信息等，或者对排版/样式精准度没有特别高的要求，那么 pptxtojson 可能会对你有帮助。
-
-### 📏 长度值单位
-输出的JSON中，所有数值长度值单位都为`pt`（point）
-> 注意：在0.x版本中，所有输出的长度值单位都是px（像素）
-
-# 🔨安装
-```
+🎯 Important Notes
+⚒️ Use Cases
+This repository was created for the project PPTist, to provide a reference example for its "import .pptx file" feature. However, currently, there are still style differences between the parsed PPT information and the source file.
+But if you only need to extract text content, media resource information, structural information, etc., from a PPT file, or if you don't have extremely high requirements for layout/style accuracy, then pptxtojson might be helpful to you.
+📏 Length Unit
+In the output JSON, all numerical length values are in pt (points).
+> Note: In version 0.x, all output length values were in px (pixels).
+> 
+🔨 Installation
 npm install pptxtojson
-```
 
-# 💿用法
-
-### 浏览器
-```html
+💿 Usage
+Browser
 <input type="file" accept="application/vnd.openxmlformats-officedocument.presentationml.presentation"/>
-```
 
-```javascript
 import { parse } from 'pptxtojson'
 
 document.querySelector('input').addEventListener('change', evt => {
@@ -42,10 +33,8 @@ document.querySelector('input').addEventListener('change', evt => {
 	}
 	reader.readAsArrayBuffer(file)
 })
-```
 
-### 输出示例
-```javascript
+Output Example
 {
 	"slides": [
 		{
@@ -72,7 +61,7 @@ document.querySelector('input').addEventListener('change', evt => {
 					"isFlipH": false,
 					"rotate": 0,
 					"vAlign": "mid",
-					"name": "矩形 1",
+					"name": "Rectangle 1",
 					"type": "shape",
 					"shapType": "rect"
 				},
@@ -81,7 +70,7 @@ document.querySelector('input').addEventListener('change', evt => {
 			"layoutElements": [
 				// more...
 			],
-			"note": "演讲者备注内容..."
+			"note": "Speaker notes content..."
 		},
 		// more...
 	],
@@ -91,153 +80,137 @@ document.querySelector('input').addEventListener('change', evt => {
 		"height": 540
 	}
 }
-```
 
-# 📕 完整功能支持
-
-### 幻灯片主题色 `themeColors`
-
-### 幻灯片尺寸 `size`
-- 幻灯片宽度 `width`
-- 幻灯片高度 `height`
-
-### 幻灯片页面 `slides`
-#### 页面背景填充（颜色、图片、渐变） `fill`
-
-#### 页面备注 `note`
-
-#### 页面内元素 `elements` / 母版元素 `layoutElements`
-##### 文字
-- 类型 `type='text'`
-- 水平坐标 `left`
-- 垂直坐标 `top`
-- 宽度 `width`
-- 高度 `height`
-- 边框颜色 `borderColor`
-- 边框宽度 `borderWidth`
-- 边框类型（实线、点线、虚线） `borderType`
-- 非实线边框样式 `borderStrokeDasharray`
-- 阴影 `shadow`
-- 填充（颜色、图片、渐变） `fill`
-- 内容文字（HTML富文本） `content`
-- 垂直翻转 `isFlipV`
-- 水平翻转 `isFlipH`
-- 旋转角度 `rotate`
-- 垂直对齐方向 `vAlign`
-- 是否为竖向文本 `isVertical`
-- 元素名 `name`
-
-##### 图片
-- 类型 `type='image'`
-- 水平坐标 `left`
-- 垂直坐标 `top`
-- 宽度 `width`
-- 高度 `height`
-- 边框颜色 `borderColor`
-- 边框宽度 `borderWidth`
-- 边框类型（实线、点线、虚线） `borderType`
-- 非实线边框样式 `borderStrokeDasharray`
-- 裁剪形状 `geom`
-- 裁剪范围 `rect`
-- 图片地址（base64） `src`
-- 旋转角度 `rotate`
-
-##### 形状
-- 类型 `type='shape'`
-- 水平坐标 `left`
-- 垂直坐标 `top`
-- 宽度 `width`
-- 高度 `height`
-- 边框颜色 `borderColor`
-- 边框宽度 `borderWidth`
-- 边框类型（实线、点线、虚线） `borderType`
-- 非实线边框样式 `borderStrokeDasharray`
-- 阴影 `shadow`
-- 填充（颜色、图片、渐变） `fill`
-- 内容文字（HTML富文本） `content`
-- 垂直翻转 `isFlipV`
-- 水平翻转 `isFlipH`
-- 旋转角度 `rotate`
-- 形状类型 `shapType`
-- 垂直对齐方向 `vAlign`
-- 形状路径 `path`
-- 元素名 `name`
-
-##### 表格
-- 类型 `type='table'`
-- 水平坐标 `left`
-- 垂直坐标 `top`
-- 宽度 `width`
-- 高度 `height`
-- 边框（4边） `borders`
-- 表格数据 `data`
-- 行高 `rowHeights`
-- 列宽 `colWidths`
-
-##### 图表
-- 类型 `type='chart'`
-- 水平坐标 `left`
-- 垂直坐标 `top`
-- 宽度 `width`
-- 高度 `height`
-- 图表数据 `data`
-- 图表主题色 `colors`
-- 图表类型 `chartType`
-- 柱状图方向 `barDir`
-- 是否带数据标记 `marker`
-- 环形图尺寸 `holeSize`
-- 分组模式 `grouping`
-- 图表样式 `style`
-
-##### 视频
-- 类型 `type='video'`
-- 水平坐标 `left`
-- 垂直坐标 `top`
-- 宽度 `width`
-- 高度 `height`
-- 视频blob `blob`
-- 视频src `src`
-
-##### 音频
-- 类型 `type='audio'`
-- 水平坐标 `left`
-- 垂直坐标 `top`
-- 宽度 `width`
-- 高度 `height`
-- 音频blob `blob`
-
-##### 公式
-- 类型 `type='math'`
-- 水平坐标 `left`
-- 垂直坐标 `top`
-- 宽度 `width`
-- 高度 `height`
-- 公式图片 `picBase64`
-- LaTeX表达式（仅支持常见结构） `latex`
-- 文本（文本和公式混排时存在） `text`
-
-##### Smart图
-- 类型 `type='diagram'`
-- 水平坐标 `left`
-- 垂直坐标 `top`
-- 宽度 `width`
-- 高度 `height`
-- 子元素集合 `elements`
-
-##### 多元素组合
-- 类型 `type='group'`
-- 水平坐标 `left`
-- 垂直坐标 `top`
-- 宽度 `width`
-- 高度 `height`
-- 子元素集合 `elements`
-
-### 更多类型请参考 👇
-[https://github.com/pipipi-pikachu/pptxtojson/blob/master/dist/index.d.ts](https://github.com/pipipi-pikachu/pptxtojson/blob/master/dist/index.d.ts)
-
-# 🙏 感谢
-本仓库大量参考了 [PPTX2HTML](https://github.com/g21589/PPTX2HTML) 和 [PPTXjs](https://github.com/meshesha/PPTXjs) 的实现。
-> 与它们不同的是：PPTX2HTML 和 PPTXjs 是将PPT文件转换为能够运行的 HTML 页面，而 pptxtojson 做的是将PPT文件转换为干净的 JSON 数据，且在原有基础上进行了大量优化补充（包括代码质量和提取信息的完整度和准确度）。
-
-# 📄 开源协议
-MIT License | Copyright © 2020-PRESENT [pipipi-pikachu](https://github.com/pipipi-pikachu)
+📕 Full Feature Support
+Slide Theme Colors themeColors
+Slide Size size
+ * Slide width width
+ * Slide height height
+Slide Pages slides
+Page Background Fill (Color, Image, Gradient) fill
+Page Notes note
+Page Elements elements / Master Slide Elements layoutElements
+Text
+ * Type type='text'
+ * Horizontal coordinate left
+ * Vertical coordinate top
+ * Width width
+ * Height height
+ * Border color borderColor
+ * Border width borderWidth
+ * Border type (solid, dot, dash) borderType
+ * Non-solid border style borderStrokeDasharray
+ * Shadow shadow
+ * Fill (color, image, gradient) fill
+ * Content text (HTML rich text) content
+ * Vertical flip isFlipV
+ * Horizontal flip isFlipH
+ * Rotation angle rotate
+ * Vertical alignment vAlign
+ * Whether it's vertical text isVertical
+ * Element name name
+Image
+ * Type type='image'
+ * Horizontal coordinate left
+ * Vertical coordinate top
+ * Width width
+ * Height height
+ * Border color borderColor
+ * Border width borderWidth
+ * Border type (solid, dot, dash) borderType
+ * Non-solid border style borderStrokeDasharray
+ * Crop shape geom
+ * Crop area rect
+ * Image URL (base64) src
+ * Rotation angle rotate
+Shape
+ * Type type='shape'
+ * Horizontal coordinate left
+ * Vertical coordinate top
+ * Width width
+ * Height height
+ * Border color borderColor
+ * Border width borderWidth
+ * Border type (solid, dot, dash) borderType
+ * Non-solid border style borderStrokeDasharray
+ * Shadow shadow
+ * Fill (color, image, gradient) fill
+ * Content text (HTML rich text) content
+ * Vertical flip isFlipV
+ * Horizontal flip isFlipH
+ * Rotation angle rotate
+ * Shape type shapType
+ * Vertical alignment vAlign
+ * Shape path path
+ * Element name name
+Table
+ * Type type='table'
+ * Horizontal coordinate left
+ * Vertical coordinate top
+ * Width width
+ * Height height
+ * Borders (4 sides) borders
+ * Table data data
+ * Row heights rowHeights
+ * Column widths colWidths
+Chart
+ * Type type='chart'
+ * Horizontal coordinate left
+ * Vertical coordinate top
+ * Width width
+ * Height height
+ * Chart data data
+ * Chart theme colors colors
+ * Chart type chartType
+ * Bar chart direction barDir
+ * Whether to include data markers marker
+ * Donut chart hole size holeSize
+ * Grouping mode grouping
+ * Chart style style
+Video
+ * Type type='video'
+ * Horizontal coordinate left
+ * Vertical coordinate top
+ * Width width
+ * Height height
+ * Video blob blob
+ * Video source src
+Audio
+ * Type type='audio'
+ * Horizontal coordinate left
+ * Vertical coordinate top
+ * Width width
+ * Height height
+ * Audio blob blob
+Equation
+ * Type type='math'
+ * Horizontal coordinate left
+ * Vertical coordinate top
+ * Width width
+ * Height height
+ * Equation image picBase64
+ * LaTeX expression (only common structures supported) latex
+ * Text (exists when text and equations are mixed) text
+SmartArt
+ * Type type='diagram'
+ * Horizontal coordinate left
+ * Vertical coordinate top
+ * Width width
+ * Height height
+ * Collection of child elements elements
+Multi-element Group
+ * Type type='group'
+ * Horizontal coordinate left
+ * Vertical coordinate top
+ * Width width
+ * Height height
+ * Collection of child elements elements
+For more types, please refer to 👇
+https://github.com/pipipi-pikachu/pptxtojson/blob/master/dist/index.d.ts
+🙏 Thanks
+This repository heavily references the implementations of PPTX2HTML and PPTXjs.
+> The difference from them is: PPTX2HTML and PPTXjs convert PPT files into runnable HTML pages, while pptxtojson converts PPT files into clean JSON data, with significant optimizations and additions to the original (including code quality and the completeness and accuracy of extracted information).
+> 
+📄 Open Source License
+MIT License | Copyright © 2020-PRESENT pipipi-pikachu
+(https://github.com/pipipi-pikachu)
