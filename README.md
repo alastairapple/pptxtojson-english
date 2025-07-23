@@ -1,13 +1,13 @@
-# 🎨 pptxtojson
-一个运行在浏览器中，可以将 .pptx 文件转为可读的 JSON 数据的 JavaScript 库。
+# 🎨 PPTX to JSON Converter
+A JavaScript library that runs in the browser and converts .pptx files to readable JSON data.
 
-> 与其他的pptx文件解析工具的最大区别在于：
-> 1. 直接运行在浏览器端；
-> 2. 解析结果是**可读**的 JSON 数据，而不仅仅是把 XML 文件内容原样翻译成难以理解的 JSON。
+> The main differences from other PPTX file parsing tools:
+> 1. Runs directly in the browser;
+> 2. The parsing result is **readable** JSON data, not just XML file content directly translated to hard-to-understand JSON.
 
-在线DEMO：https://pipipi-pikachu.github.io/pptxtojson/
+Online Demo: https://pipipi-pikachu.github.io/pptxtojson/
 
-# 🎯 注意事项
+# 🎯 Important Notes
 ### ⚒️ 使用场景
 本仓库诞生于项目 [PPTist](https://github.com/pipipi-pikachu/PPTist) ，希望为其“导入 .pptx 文件功能”提供一个参考示例。不过就目前来说，解析出来的PPT信息与源文件在样式上还是存在差异。
 
